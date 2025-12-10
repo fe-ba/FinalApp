@@ -261,7 +261,6 @@ class GrammarAlgorithms:
             new_grammar (CFGGrammar): Nueva gramática simplificada.
             steps (list): Lista de pasos detallando la eliminación de variables.
         """
-        from cfg_grammar import CFGGrammar
         steps = []
 
         steps.append({

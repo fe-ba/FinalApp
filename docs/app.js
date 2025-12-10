@@ -22,8 +22,10 @@ async function initializePyodide() {
         const grammarAlgorithmsResponse = await fetch('grammar_algorithms.py');
         const grammarAlgorithmsCode = await grammarAlgorithmsResponse.text();
         
-        // Load modules into Pyodide
+        // Load modules into Pyodide with proper imports
         await pyodide.runPythonAsync(cfgGrammarCode);
+        // Make CFGGrammar available globally for grammar_algorithms.py
+        await pyodide.runPythonAsync('import __main__; CFGGrammar = __main__.CFGGrammar');
         await pyodide.runPythonAsync(grammarAlgorithmsCode);
         
         // Create AppAPI class in Python
